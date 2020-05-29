@@ -24,7 +24,7 @@ all_locations = pd.concat(locations)
 # get time series data
 discharge_daily = pd.read_csv('Data/TimeSeries/Daily_Discharge.csv', index_col=0)
 well_depths = pd.read_csv('Data/TimeSeries/Well_Depths.csv', index_col=0)
-rainfall = pd.read_csv('Data/TimeSeries/Well_Depths.csv', index_col=0)
+rainfall = pd.read_csv('Data/TimeSeries/Daily_Rainfall.csv', index_col=0)
 
 time_series = [discharge_daily,well_depths,rainfall]
 

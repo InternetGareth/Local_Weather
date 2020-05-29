@@ -21,11 +21,12 @@ all_locations = pd.concat(locations)
 
 
 
-# get well depths
+# get time series data
 discharge_daily = pd.read_csv('Data/TimeSeries/Daily_Discharge.csv', index_col=0)
 well_depths = pd.read_csv('Data/TimeSeries/Well_Depths.csv', index_col=0)
+rainfall = pd.read_csv('Data/TimeSeries/Well_Depths.csv', index_col=0)
 
-time_series = [discharge_daily,well_depths]
+time_series = [discharge_daily,well_depths,rainfall]
 
 
 mapbox_token = 'pk.eyJ1IjoiaW50ZXJuZXRnYXJldGgiLCJhIjoiY2pyaWFwOTd1MDB3ZzQ0bzE2Y3B6eWkxMCJ9.9fxAtjyCT5glHuPiK8ee0Q'
@@ -77,6 +78,11 @@ def plot_well_data(clickdata):
         data = selected_site_data['Water Level +/- MSL']
         name = selected_site_data['Well Name'][0][8:]
 
+    elif j == 2:
+        data = selected_site_data['Rain(inches)']
+        name = selected_site_data['Station Name'][0]
+
+    data = data.sort_index()
 
     well_depth = go.Scatter(
         x=data.index,
